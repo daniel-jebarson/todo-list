@@ -21,9 +21,12 @@ const Todo = (props: { display: number }) => {
       justifyContent={"center"}
       display="flex"
       flexDirection={"column"}
+      alignItems="center"
       mt="80px"
     >
-      <Text ml={"40%"}>No of Tasks:{state.noOfTasks}</Text>
+      <Text fontSize={"3xl"} fontWeight={"bold"}>
+        No of Tasks:{state.noOfTasks}
+      </Text>
 
       <Container
         justifyContent={"center"}
@@ -35,17 +38,29 @@ const Todo = (props: { display: number }) => {
         {state.data.map((val, index) => {
           return (
             <ButtonGroup size="sm" isAttached variant="outline" gap={"30px"}>
-              <Text>{val.description}</Text>
-              <IconButton
-                onClick={() => {
-                  REMOVETODO();
-                }}
-                w={8}
-                h={8}
-                color="red.500"
-                aria-label="Remove"
-                icon={<DeleteIcon />}
-              />
+              <Container
+                position={"relative"}
+                border={"2px solid rgba(66, 153, 225, 0.6)"}
+                display="flex"
+                flexDirection={"row"}
+              >
+                <Text borderRadius="15px" padding={"10px 17px"} minW={"100px"}>
+                  {val.description}
+                </Text>
+                <IconButton
+                  position={"absolute"}
+                  right="10px"
+                  top="7px"
+                  onClick={() => {
+                    REMOVETODO();
+                  }}
+                  w={8}
+                  h={8}
+                  color="red.500"
+                  aria-label="Remove"
+                  icon={<DeleteIcon />}
+                />
+              </Container>
             </ButtonGroup>
           );
         })}

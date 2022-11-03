@@ -21,7 +21,7 @@ export default function Home() {
   const state = useSelector((state: State) => state.todo);
   return (
     <ChakraProvider resetCSS>
-      <Container>
+      <Container mt="50px">
         <Text
           bgClip="text"
           fontSize="6xl"
@@ -35,6 +35,11 @@ export default function Home() {
         <InputGroup mt={"50px"} width={"600px"} size="lg">
           <Input
             onChange={(e) => setDesc(e.target.value)}
+            onKeyPress={(e) => {
+              if (e.key == "Enter") {
+                ADDTODO(desc);
+              }
+            }}
             pr="4.5rem"
             type={"text"}
             placeholder="Enter password"
