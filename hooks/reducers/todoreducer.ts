@@ -29,7 +29,7 @@ const TodoReducer = (state: StateInter = initialState, action: Action) => {
       });
 
       return {
-        noOfTasks: state.noOfTasks - 1,
+        noOfTasks: state.noOfTasks == 0 ? 0 : state.noOfTasks - 1,
         data: list,
       };
     default:
