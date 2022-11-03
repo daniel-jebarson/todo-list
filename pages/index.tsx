@@ -34,10 +34,10 @@ export default function Home() {
       <Container justifyContent={"center"} display="flex">
         <InputGroup mt={"50px"} width={"600px"} size="lg">
           <Input
-            onChange={(e) => setDesc(e.target.value)}
+            onChange={(e) => setDesc(e.target.value.trim())}
             onKeyPress={(e) => {
               if (e.key == "Enter") {
-                ADDTODO(desc);
+                desc != "" ? ADDTODO(desc) : alert("Input can't be empty");
               }
             }}
             pr="4.5rem"
@@ -46,7 +46,9 @@ export default function Home() {
           />
           <InputRightElement width="2.8rem">
             <IconButton
-              onClick={() => ADDTODO(desc)}
+              onClick={() =>
+                desc != "" ? ADDTODO(desc) : alert("Input can't be empty")
+              }
               colorScheme="green"
               color={"white"}
               aria-label="Search database"
