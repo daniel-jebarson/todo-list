@@ -35,20 +35,27 @@ export default function Home() {
         <InputGroup mt={"50px"} width={"600px"} size="lg">
           <Input
             onChange={(e) => setDesc(e.target.value.trim())}
+            value={desc}
             onKeyPress={(e) => {
               if (e.key == "Enter") {
-                desc != "" ? ADDTODO(desc) : alert("Input can't be empty");
+                if (desc != "") {
+                  ADDTODO(desc);
+                  setDesc("");
+                } else alert("Input can't be empty");
               }
             }}
             pr="4.5rem"
             type={"text"}
-            placeholder="Enter password"
+            placeholder="Enter Task"
           />
           <InputRightElement width="2.8rem">
             <IconButton
-              onClick={() =>
-                desc != "" ? ADDTODO(desc) : alert("Input can't be empty")
-              }
+              onClick={() => {
+                if (desc != "") {
+                  ADDTODO(desc);
+                  setDesc("");
+                } else alert("Input can't be empty");
+              }}
               colorScheme="green"
               color={"white"}
               aria-label="Search database"
