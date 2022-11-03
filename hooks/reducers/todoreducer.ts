@@ -2,12 +2,7 @@ import { Action, StateInter } from "../actions/action";
 import { ActionType } from "../action-types/actiontypes";
 const initialState = {
   noOfTasks: 1,
-  data: [
-    {
-      id: 1,
-      description: "Hello wolrd",
-    },
-  ],
+  data: ["Hello world"],
 };
 
 const TodoReducer = (state: StateInter = initialState, action: Action) => {
@@ -15,22 +10,13 @@ const TodoReducer = (state: StateInter = initialState, action: Action) => {
     case ActionType.ADD_LIST:
       return {
         noOfTasks: state.noOfTasks + 1,
-        data: [
-          ...state.data,
-          {
-            id: state.data.length + 1,
-            description: action.description,
-          },
-        ],
+        data: [...state.data, action.description],
       };
     case ActionType.REMOVE_LIST:
-      const list = state.data.filter(function (x) {
-        return x.id !== state.noOfTasks;
-      });
-
+      state.data.splice(action.index, 1);
       return {
         noOfTasks: state.noOfTasks == 0 ? 0 : state.noOfTasks - 1,
-        data: list,
+        data: state.data,
       };
     default:
       return state;

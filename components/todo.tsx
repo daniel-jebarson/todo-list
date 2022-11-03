@@ -45,14 +45,14 @@ const Todo = (props: { display: number }) => {
                 flexDirection={"row"}
               >
                 <Text borderRadius="15px" padding={"10px 17px"} minW={"100px"}>
-                  {val.description}
+                  {val}
                 </Text>
                 <IconButton
                   position={"absolute"}
                   right="10px"
                   top="7px"
                   onClick={() => {
-                    REMOVETODO();
+                    REMOVETODO(index);
                   }}
                   w={8}
                   h={8}

@@ -10,10 +10,11 @@ export const ADDTODO = (desc: string) => {
   };
 };
 
-export const REMOVETODO = () => {
+export const REMOVETODO = (x:number) => {
   return (dispatch: Dispatch<Action>) => {
     dispatch({
       type: ActionType.REMOVE_LIST,
+      index:x
     });
   };
 };
