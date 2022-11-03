@@ -34,12 +34,12 @@ export default function Home() {
       <Container justifyContent={"center"} display="flex">
         <InputGroup mt={"50px"} width={"600px"} size="lg">
           <Input
-            onChange={(e) => setDesc(e.target.value.trim())}
+            onChange={(e) => setDesc(e.target.value)}
             value={desc}
             onKeyPress={(e) => {
               if (e.key == "Enter") {
                 if (desc != "") {
-                  ADDTODO(desc);
+                  ADDTODO(desc.trim());
                   setDesc("");
                 } else alert("Input can't be empty");
               }
@@ -52,7 +52,7 @@ export default function Home() {
             <IconButton
               onClick={() => {
                 if (desc != "") {
-                  ADDTODO(desc);
+                  ADDTODO(desc.trim());
                   setDesc("");
                 } else alert("Input can't be empty");
               }}

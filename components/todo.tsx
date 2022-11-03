@@ -22,10 +22,11 @@ const Todo = (props: { display: number }) => {
       display="flex"
       flexDirection={"column"}
       alignItems="center"
+      border={"2px solid rgba(66, 153, 225, 0.6)"}
       mt="80px"
     >
-      <Text fontSize={"3xl"} fontWeight={"bold"}>
-        No of Tasks:{state.noOfTasks}
+      <Text pt={"25px"} fontSize={"3xl"} fontWeight={"bold"}>
+        No of Tasks: {state.noOfTasks}
       </Text>
 
       <Container
@@ -34,11 +35,13 @@ const Todo = (props: { display: number }) => {
         flexDirection={"column"}
         mt="40px"
         gap={"40px"}
+        pb={"19px"}
       >
         {state.data.map((val, index) => {
           return (
             <ButtonGroup size="sm" isAttached variant="outline" gap={"30px"}>
               <Container
+                key={index}
                 position={"relative"}
                 border={"2px solid rgba(66, 153, 225, 0.6)"}
                 display="flex"
